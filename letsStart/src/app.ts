@@ -1,7 +1,6 @@
 import * as express from 'express';
 import catsRouter from './cats/cats.route';
 const app: express.Express = express();
-const data = [1, 2, 3, 4];
 
 //* logging middleware
 app.use((req, res, next) => {
