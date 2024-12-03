@@ -4,8 +4,8 @@ import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
 import { LoggerMiddleware } from './common/middlewares/logger.middleware';
 import { MongooseModule } from '@nestjs/mongoose';
+import * as mongoose from 'mongoose';
 import { ConfigModule } from '@nestjs/config';
-import mongoose, * as Mongoose from 'mongoose';
 
 @Module({
   imports: [
