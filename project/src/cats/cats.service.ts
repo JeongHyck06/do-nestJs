@@ -1,3 +1,4 @@
+import { CatsRepository } from './cats.repository';
 import {
   HttpException,
   Injectable,
@@ -11,10 +12,11 @@ import { CatRequestDTO } from './dto/cats.request.dto';
 
 @Injectable()
 export class CatsService {
-  constructor(@InjectModel(Cat.name) private readonly catModel: Model<Cat>) {}
+  constructor(private readonly catsRepository: CatsRepository) {}
+
   async signUp(body: CatRequestDTO) {
     const { email, name, password } = body;
-    const isCatExist = await this.catModel.exists({ email });
+    const isCatExist = await this.catsRepository.existsByEmail(email);
 
     //유효성 검사
     if (isCatExist) {
@@ -25,7 +27,7 @@ export class CatsService {
     // 비밀번호 암호화
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const cat = await this.catModel.create({
+    const cat = await this.catsRepository.create({
       email,
       name,
       password: hashedPassword,
