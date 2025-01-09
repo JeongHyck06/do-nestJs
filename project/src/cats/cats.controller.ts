@@ -11,10 +11,14 @@ import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
+  /**
+   * todo CRUD api 매서드 나머지만 구현해주세요 / 12.23 ~  12.25
+   */
   @ApiOperation({ summary: '현재 고양이 가져오기' })
   @Get()
   getCurrentCat() {
     return 'current cat';
+
   }
 
   @ApiResponse({
@@ -49,3 +53,4 @@ export class CatsController {
     return 'uploadImg';
   }
 }
+
